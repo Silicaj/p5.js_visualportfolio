@@ -1,166 +1,156 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>나의 p5.js 작품 포트폴리오</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>나의 p5.js 작품 포트폴리오</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            min-height: 100vh;
-            background: #f0f4ff;
-            padding: 40px 20px;
-            color: #222;
-        }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      min-height: 100vh;
+      background: #f0f4ff;
+      padding: 40px 20px;
+      color: #222;
+    }
 
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
 
-            header h1 {
-                font-size: 2.2rem;
-                font-weight: 700;
-                letter-spacing: 2px;
-                color: #3a3af4;
-            }
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #3a3af4;
+    }
 
-            header p {
-                margin-top: 8px;
-                font-size: 0.95rem;
-                color: #888;
-                letter-spacing: 1px;
-            }
+    header p {
+      margin-top: 8px;
+      font-size: 0.95rem;
+      color: #888;
+      letter-spacing: 1px;
+    }
 
-        #projects {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            max-width: 860px;
-            margin: 0 auto;
-            gap: 20px;
-        }
+    #projects {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 860px;
+      margin: 0 auto;
+      gap: 20px;
+    }
 
-        .cell {
-            background: #ffffff;
-            border: 1px solid #e0e4f0;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+    .cell {
+      background: #ffffff;
+      border: 1px solid #e0e4f0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
 
-            .cell:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 12px 32px rgba(58,58,244,0.12);
-            }
+    .cell:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(58,58,244,0.12);
+    }
 
-        .cell-label {
-            padding: 10px 16px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            color: #3a3af4;
-            background: #f5f6ff;
-            border-bottom: 1px solid #e0e4f0;
-        }
+    .cell-label {
+      padding: 10px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #3a3af4;
+      background: #f5f6ff;
+      border-bottom: 1px solid #e0e4f0;
+    }
 
-        .preview {
-            aspect-ratio: 16 / 9;
-            position: relative;
-            overflow: hidden;
-        }
+    .preview {
+      aspect-ratio: 16 / 9;
+      position: relative;
+      overflow: hidden;
+    }
 
-            .preview iframe {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 600px;
-                height: 400px;
-                border: none;
-                transform-origin: top left;
-                transform: scale(0.5);
-                pointer-events: none;
-            }
+    .preview iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 600px;
+      height: 400px;
+      border: none;
+      transform-origin: top left;
+      transform: scale(0.5);
+    }
 
-        .work3-desc {
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 12px 16px;
-            background: #ffffff;
-            border: 1px solid #e0e4f0;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            color: #555;
-            line-height: 1.7;
-        }
+    .work3-desc {
+      max-width: 860px;
+      margin: 12px auto 0;
+      padding: 12px 16px;
+      background: #ffffff;
+      border: 1px solid #e0e4f0;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      color: #555;
+      line-height: 1.7;
+    }
 
-            .work3-desc strong {
-                color: #3a3af4;
-                margin-right: 6px;
-            }
-
-            .work3-desc .tag {
-                display: inline-block;
-                background: #eef0ff;
-                color: #3a3af4;
-                border-radius: 6px;
-                padding: 2px 8px;
-                font-size: 0.75rem;
-                font-weight: 600;
-                margin-right: 6px;
-            }
-    </style>
+    .tag {
+      display: inline-block;
+      background: #eef0ff;
+      color: #3a3af4;
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>p5.js 포트폴리오</h1>
-        <p>최종 과제 · Github Pages 웹사이트 배포</p>
-    </header>
+  <header>
+    <h1>p5.js 포트폴리오</h1>
+    <p>최종 과제 · Github Pages 웹사이트 배포</p>
+  </header>
 
-    <main id="projects">
-        <div class="cell">
-            <div class="cell-label">WORK 01 — 정적</div>
-            <div class="preview">
-                <iframe src="sample1/index.html"></iframe>
-            </div>
-        </div>
+  <main id="projects">
 
-        <div class="cell">
-            <div class="cell-label">WORK 04 — 동적</div>
-            <div class="preview">
-                <iframe src="sample4/index.html"></iframe>
-            </div>
-        </div>
-
-        <div class="cell">
-            <div class="cell-label">WORK 02 — 정적</div>
-            <div class="preview">
-                <iframe src="sample2/index.html"></iframe>
-            </div>
-        </div>
-
-        <div class="cell">
-            <div class="cell-label">WORK 03 — 동적</div>
-            <div class="preview">
-                <iframe src="sample3/index.html"></iframe>
-            </div>
-        </div>
-
-    </main>
-
-    <div class="work3-desc" style="margin-top: 12px;">
-        <span class="tag">WORK 03</span>
-        <span class="tag">Mouse</span> 안경이 커서를 따라감 · 클릭 시 안경알 검게 변화 · 배경색 랜덤 변화 &nbsp;
-        <span class="tag">Keyboard</span> ←→ 방향키로 배경색 변경 · Q 위치 고정 · W 고정 해제
+    <div class="cell">
+      <div class="cell-label">WORK 01 — 정적</div>
+      <div class="preview">
+        <iframe src="sample1/index.html"></iframe>
+      </div>
     </div>
+
+    <div class="cell">
+      <div class="cell-label">WORK 04 — 동적</div>
+      <div class="preview">
+        <iframe src="sample4/index.html"></iframe>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="cell-label">WORK 02 — 정적</div>
+      <div class="preview">
+        <iframe src="sample2/index.html"></iframe>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="cell-label">WORK 03 — 동적</div>
+      <div class="preview">
+        <iframe src="sample3/index.html"></iframe>
+      </div>
+    </div>
+
+  </main>
+
+  <div class="work3-desc">
+    <span class="tag">WORK 03</span>
+    <span class="tag">Mouse</span> 안경이 커서를 따라감 · 클릭 시 안경알 검게 변화 · 배경색 랜덤 변화 &nbsp;
+    <span class="tag">Keyboard</span> ←→ 방향키로 배경색 변경 · Q 위치 고정 · W 고정 해제
+  </div>
 
 </body>
 </html>
