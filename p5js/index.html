@@ -18,7 +18,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     header {
@@ -83,11 +83,8 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 600px;
-      height: 400px;
       border: none;
       transform-origin: center center;
-      transform: translate(-50%, -50%) scale(var(--s, 0.65));
     }
 
     .work3-desc {
@@ -125,29 +122,29 @@
 
     <div class="cell">
       <div class="cell-label">WORK 01 — 정적</div>
-      <div class="preview" id="p1">
-        <iframe src="sample1/index.html"></iframe>
+      <div class="preview" data-w="600" data-h="400">
+        <iframe src="sample1/index.html" width="600" height="400"></iframe>
       </div>
     </div>
 
     <div class="cell">
       <div class="cell-label">WORK 04 — 동적</div>
-      <div class="preview" id="p2">
-        <iframe src="sample4/index.html"></iframe>
+      <div class="preview" data-w="600" data-h="400">
+        <iframe src="sample4/index.html" width="600" height="400"></iframe>
       </div>
     </div>
 
     <div class="cell">
       <div class="cell-label">WORK 02 — 정적</div>
-      <div class="preview" id="p3">
-        <iframe src="sample2/index.html"></iframe>
+      <div class="preview" data-w="400" data-h="600">
+        <iframe src="sample2/index.html" width="400" height="600"></iframe>
       </div>
     </div>
 
     <div class="cell">
       <div class="cell-label">WORK 03 — 동적</div>
-      <div class="preview" id="p4">
-        <iframe src="sample3/index.html"></iframe>
+      <div class="preview" data-w="400" data-h="600">
+        <iframe src="sample3/index.html" width="400" height="600"></iframe>
       </div>
     </div>
 
@@ -161,15 +158,14 @@
 
   <script>
     function fitIframes() {
-      const previews = document.querySelectorAll('.preview');
-      previews.forEach(p => {
-        const w = p.clientWidth;
-        const h = p.clientHeight;
-        const scaleX = w / 600;
-        const scaleY = h / 400;
-        const scale = Math.min(scaleX, scaleY);
-        p.querySelector('iframe').style.transform =
-          `translate(-50%, -50%) scale(${scale})`;
+      document.querySelectorAll('.preview').forEach(p => {
+        const fw = p.clientWidth;
+        const fh = p.clientHeight;
+        const iw = parseInt(p.dataset.w);
+        const ih = parseInt(p.dataset.h);
+        const scale = Math.min(fw / iw, fh / ih);
+        const iframe = p.querySelector('iframe');
+        iframe.style.transform = `translate(-50%, -50%) scale(${scale})`;
       });
     }
     window.addEventListener('load', fitIframes);
